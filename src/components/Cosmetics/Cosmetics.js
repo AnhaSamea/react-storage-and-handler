@@ -7,6 +7,7 @@ const Cosmetics = () => {
     /* const first = 50;
     const second = 5;
     const total = add(first,second) */
+    //from json generator
     const cosmetics = [
         {
           "id": "6332889c733522bd4ea23054",
