@@ -1,16 +1,30 @@
 //use local storage to manage cart data
 const addTODb = id => {
-    const quantity = localStorage.getItem(id);
-    if (quantity) {
-        console.log('already exists');
-        const newQuantity = +(quantity) + 1;
-        localStorage.setItem(id, newQuantity);
+    let shoppingCart;
+
+    //get the shopping cart from local storage
+    const storedCart = localStorage.getItem('shopping-cart');
+    if (storedCart) {
+        //  console.log(storedCart);
+        shoppingCart = JSON.parse(storedCart);
     }
     else {
-        console.log('new item');
-        localStorage.setItem(id, 1);
+        shoppingCart = {}; 
+    }
+    //add quantity
+    const quantity = shoppingCart[id];
+    if (quantity) {
+
+        const newQuantity = +(quantity) + 1;
+        shoppingCart[id] = newQuantity;
 
     }
-    
+    else {
+
+        shoppingCart[id] = 1;
+
+    }
+    //value update korar por local storage e pathabo
+    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 }
-export {addTODb}
+export { addTODb }
